@@ -1,0 +1,108 @@
+$large-desktop-width: 1600px;
+$small-desktop-width: 1200px;
+$tablet-width: 992px;
+$large-mobile-width: 768px;
+$mobile-width: 576px;
+
+$breakpoints: (
+	'ldw': $large-desktop-width,
+	'sdw': $small-desktop-width,
+	'tw': $tablet-width,
+	'lmw': $large-mobile-width,
+	'mw': $mobile-width
+);
+
+$container-lg-width: 1552px;
+$container-width: 1380px;
+$container-slim-width: 1149px;
+$container-padding: 1rem;
+
+$fontSizes: (
+	'0-75': 0.75rem,
+	'0-875': 0.875rem,
+	'1': 1rem,
+	'1-125': 1.125rem,
+	'1-25': 1.25rem,
+	'1-5': 1.5rem,
+	'1-75': 1.75rem,
+	'2': 2rem,
+	'2-25': 2.25rem,
+	'2-5': 2.5rem,
+	'2-75': 2.75rem,
+	'3': 3rem,
+	'3-5': 3.5rem,
+	'4-5': 4.5rem
+);
+
+// initial gap for layouting
+$default-layout-gap: 1rem;
+
+// .gap{direction}{-breakpoint}-value =>
+// .gap-lg-0 => gap: 0; (after lg breakpoint)
+// directions: ('', '-h', '-v')
+$layout-gaps: (
+	'0': 0,
+	'0.75': 0.75rem,
+	'1': 1rem
+);
+
+// .p{direction}{-breakpoint}-value =>
+// .pt-lg-20 => padding-top: 20px; (after lg breakpoint)
+// directions: ('t', 'b', 'l', 'r', 'h', 'v')
+$paddings: (0, 4, 8, 12, 16, 20, 28, 32, 42, 56, 72, 80, 112);
+
+// .m{direction}{-breakpoint}-value =>
+// .mb-lg-20 => margin-bottom: 20px; (after lg breakpoint)
+$margins: (0, 4, 8, 12, 16, 24, 32, 40, 56, 72, 80, 108, 172);
+
+// .w{-breakpoint}-{value} =>
+// .w-lg-100 => width: 100%; (after lg breakpoint)
+$width-sizing-options: (
+	'100': 100%
+);
+
+// .h{-breakpoint}-{value} =>
+// .h-lg-100 => height: 100%; (after lg breakpoint)
+$height-sizing-options: (
+	'100vh': 100vh
+);
+
+// .background-{key} => .background-white => background-color: #fff;
+// .color-{key} => .color-white => color: #fff;
+$colors: (
+	'white': #fff,
+	'dark': #303030,
+	'dark-silver': #6e6e6e,
+	'weldon-blue': #7594aa,
+	'rock-blue': #a2bccf,
+	'metallic-silver': #a2adb2,
+	'argent': #c1c1c1,
+	'cultured': #f5f5f7
+);
+
+// .opc-{value} => .opc-72 => opacity: 0.72;
+$opacities: (
+	'1': 1,
+	'72': 0.72
+);
+
+// .lh-{value} => .lh-75 => line-height: 75%;
+$line-heights: (
+	'75': 75%,
+	'124': 124%
+);
+
+// .ls-{value} => .ls-1 => letter-spacing: 1px;
+$letter-spacings: (
+	'1': 1px,
+	'2': 2px,
+	'5': 0.05em
+);
+
+// .fw-{value} => .fw-400 => font-weight: 400;
+$font-weights: (
+	'400': 400,
+	'500': 500,
+	'600': 600,
+	'700': 700
+);

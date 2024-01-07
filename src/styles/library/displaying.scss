@@ -1,0 +1,30 @@
+@mixin displaying($breakpoint: '') {
+	@if $breakpoint != '' {
+		$breakpoint: -#{$breakpoint};
+	}
+
+	.hidden#{$breakpoint} {
+		visibility: hidden;
+	}
+	.visible#{$breakpoint} {
+		visibility: visible;
+	}
+	.block#{$breakpoint} {
+		display: block;
+	}
+	.display-none#{$breakpoint} {
+		display: none;
+	}
+	.relative#{$breakpoint} {
+		position: relative;
+	}
+	.overflow-hidden#{$breakpoint} {
+		overflow: hidden;
+	}
+}
+
+@each $breakpoint, $breakpointWidth in $breakpoints {
+	@media (max-width: $breakpointWidth) {
+		@include displaying($breakpoint);
+	}
+}

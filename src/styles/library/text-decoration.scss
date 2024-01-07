@@ -1,0 +1,17 @@
+.uppercase {
+	text-transform: uppercase;
+}
+.underline {
+	text-decoration: underline;
+}
+.capitalize {
+	text-transform: capitalize;
+}
+.italic {
+	font-style: italic;
+}
+.hover-underline {
+	&:hover {
+		text-decoration: underline;
+	}
+}

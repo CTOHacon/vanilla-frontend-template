@@ -1,0 +1,40 @@
+[class*='g-layout'],
+
+// start wp-admin style
+[class*='g-layout']>.block-editor-inner-blocks>.block-editor-block-list__layout
+// end wp-admin style
+{
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	gap: $default-layout-gap;
+	grid-column-gap: $default-layout-gap;
+	grid-row-gap: $default-layout-gap;
+	grid-auto-flow: dense;
+}
+
+@mixin grid-layout($breakpoint: '') {
+	@if $breakpoint != '' {
+		$breakpoint: -#{$breakpoint};
+	}
+	@for $i from 1 through 12 {
+		.g#{$breakpoint}-col-#{$i} {
+			grid-column: span $i;
+		}
+		.g#{$breakpoint}-col-start-#{$i} {
+			grid-column-start: #{$i};
+		}
+		.g#{$breakpoint}-col-end-#{$i} {
+			grid-column-end: #{$i};
+		}
+	}
+	.g#{$breakpoint}-col-end-13 {
+		grid-column-end: 13;
+	}
+}
+@include grid-layout();
+
+@each $breakpoint, $breakpointWidth in $breakpoints {
+	@media (max-width: $breakpointWidth) {
+		@include grid-layout($breakpoint);
+	}
+}

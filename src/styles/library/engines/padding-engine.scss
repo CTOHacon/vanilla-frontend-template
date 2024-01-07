@@ -1,0 +1,43 @@
+$directions: ('t', 'b', 'l', 'r', 'h', 'v');
+
+@mixin paddingPropertiesByDirection($value, $direction) {
+	@if $direction == 't' {
+		padding-top: #{$value}px;
+	} @else if $direction == 'b' {
+		padding-bottom: #{$value}px;
+	} @else if $direction == 'l' {
+		padding-left: #{$value}px;
+	} @else if $direction == 'r' {
+		padding-right: #{$value}px;
+	} @else if $direction == 'h' {
+		padding-left: #{$value}px;
+		padding-right: #{$value}px;
+	} @else if $direction == 'v' {
+		padding-top: #{$value}px;
+		padding-bottom: #{$value}px;
+	}
+}
+
+@mixin padding-options($breakpoint: '') {
+	@if $breakpoint != '' {
+		$breakpoint: '-#{$breakpoint}';
+	}
+
+	@each $padding in $paddings {
+		.p#{$breakpoint}-#{$padding} {
+			padding: #{$padding}px;
+		}
+		@each $direction in $directions {
+			.p#{$direction}#{$breakpoint}-#{$padding} {
+				@include paddingPropertiesByDirection($padding, $direction);
+			}
+		}
+	}
+}
+
+@include padding-options();
+@each $breakpoint, $breakpointWidth in $breakpoints {
+	@media (max-width: $breakpointWidth) {
+		@include padding-options($breakpoint);
+	}
+}

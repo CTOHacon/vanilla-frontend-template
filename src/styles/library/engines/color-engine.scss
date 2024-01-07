@@ -1,0 +1,24 @@
+@mixin colorClassesSet($key, $value) {
+	.background-#{$key} {
+		background: #{$value};
+
+		&--on-hover {
+			&:hover {
+				background: #{$value};
+			}
+		}
+	}
+	.color-#{$key} {
+		color: #{$value};
+
+		&--on-hover {
+			&:hover {
+				color: #{$value};
+			}
+		}
+	}
+}
+
+@each $color, $value in $colors {
+	@include colorClassesSet($color, $value);
+}

@@ -1,0 +1,47 @@
+@mixin flex-layout($breakpoint: '') {
+	@if $breakpoint != '' {
+		$breakpoint: -#{$breakpoint};
+	}
+	.flex#{$breakpoint} {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.flex#{$breakpoint}-column {
+		display: flex;
+		flex-direction: column;
+	}
+	.flex#{$breakpoint}-row {
+		display: flex;
+		flex-wrap: wrap;
+		--col-gap: #{$default-layout-gap};
+		--row-gap: #{$default-layout-gap};
+	}
+
+	.flex#{$breakpoint}-reset-order {
+		order: unset;
+	}
+	.flex#{$breakpoint}-first-col {
+		order: -1;
+	}
+	.flex#{$breakpoint}-last-col {
+		order: 1;
+	}
+
+	$col-width: calc(100% / 12);
+	.flex-col#{$breakpoint} {
+		flex: 1;
+	}
+	@for $i from 1 through 12 {
+		.flex-col#{$breakpoint}-#{$i} {
+			width: calc(#{$col-width} * #{$i} - var(--col-gap));
+		}
+	}
+}
+
+@include flex-layout();
+
+@each $breakpoint, $breakpointWidth in $breakpoints {
+	@media (max-width: $breakpointWidth) {
+		@include flex-layout($breakpoint);
+	}
+}

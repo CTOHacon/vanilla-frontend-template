@@ -1,0 +1,46 @@
+$directions: ('t', 'b', 'l', 'r');
+
+@mixin marginPropertiesByDirection($value, $direction) {
+	@if $direction == 't' {
+		margin-top: #{$value}px !important;
+	} @else if $direction == 'b' {
+		margin-bottom: #{$value}px !important;
+	} @else if $direction == 'l' {
+		margin-left: #{$value}px !important;
+	} @else if $direction == 'r' {
+		margin-right: #{$value}px !important;
+	}
+}
+
+@mixin margins($breakpoint: '') {
+	@if $breakpoint != '' {
+		$breakpoint: -#{$breakpoint};
+	}
+	@each $margin in $margins {
+		@each $direction in $directions {
+			.m#{$direction}#{$breakpoint}-#{$margin} {
+				@include marginPropertiesByDirection($margin, $direction);
+			}
+		}
+	}
+	.mt#{$breakpoint}-auto {
+		margin-top: auto !important;
+	}
+	.mb#{$breakpoint}-auto {
+		margin-bottom: auto !important;
+	}
+	.ml#{$breakpoint}-auto {
+		margin-left: auto !important;
+	}
+	.mr#{$breakpoint}-auto {
+		margin-right: auto !important;
+	}
+}
+
+@include margins();
+
+@each $breakpoint, $breakpointWidth in $breakpoints {
+	@media (max-width: $breakpointWidth) {
+		@include margins($breakpoint);
+	}
+}

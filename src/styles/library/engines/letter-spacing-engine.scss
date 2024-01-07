@@ -1,0 +1,5 @@
+@each $key, $value in $letter-spacing-values {
+	.ls-#{$key} {
+		letter-spacing: $value;
+	}
+}

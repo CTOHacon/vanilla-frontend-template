@@ -1,0 +1,19 @@
+@mixin fontSizes($breakpoint: '') {
+	@if $breakpoint != '' {
+		$breakpoint: '-#{$breakpoint}';
+	}
+
+	@each $key, $value in $fontSizes {
+		.fs#{$breakpoint}-#{$key} {
+			font-size: $value;
+		}
+	}
+}
+
+@include fontSizes();
+
+@each $breakpoint, $breakpointWidth in $breakpoints {
+	@media (max-width: $breakpointWidth) {
+		@include fontSizes($breakpoint);
+	}
+}
