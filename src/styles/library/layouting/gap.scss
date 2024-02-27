@@ -1,4 +1,4 @@
-@mixin gaps($breakpoint: '') {
+@mixin gap-classes($breakpoint: '') {
 	@if $breakpoint != '' {
 		$breakpoint: -#{$breakpoint};
 	}
@@ -13,24 +13,20 @@
 			{
 				@if $direction == '' {
 					gap: $value;
-					--col-gap: #{$value};
-					--row-gap: #{$value};
 				} @else if $direction == '-h' {
 					grid-column-gap: $value;
-					--col-gap: #{$value};
 				} @else if $direction == '-v' {
 					grid-row-gap: $value;
-					--row-gap: #{$value};
 				}
 			}
 		}
 	}
 }
 
-@include gaps();
+@include gap-classes();
 
 @each $breakpoint, $breakpointWidth in $breakpoints {
 	@media (max-width: $breakpointWidth) {
-		@include gaps($breakpoint);
+		@include gap-classes($breakpoint);
 	}
 }

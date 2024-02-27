@@ -1,4 +1,4 @@
-@mixin opacityClassesSet($key, $value) {
+@mixin opacity-classes($key, $value) {
 	.opc-#{$key} {
 		opacity: $value;
 
@@ -11,5 +11,5 @@
 }
 
 @each $opacity, $value in $opacities {
-	@include opacityClassesSet($opacity, $value);
+	@include opacity-classes($opacity, $value);
 }

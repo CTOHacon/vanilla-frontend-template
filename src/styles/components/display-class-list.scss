@@ -1,0 +1,37 @@
+[display-class-list] {
+	position: relative;
+	&::before {
+		// display class list attribute in content
+		content: attr(class);
+		position: absolute;
+		bottom: 100%;
+		left: 0;
+		// make colors to be readable on any background
+		color: #fff;
+		background-color: #000;
+		font-size: 0.9rem;
+		font-weight: 400;
+		padding: 0.1rem 0.4rem;
+		text-align: center;
+		max-width: 100%;
+		width: max-content;
+	}
+}
+[display-class-list*='center'] {
+	&::before {
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
+[display-class-list*='bottom'] {
+	&::before {
+		bottom: auto;
+		top: 100%;
+	}
+}
+
+[display-selected-class-list] {
+	&::before {
+		content: attr(display-selected-class-list);
+	}
+}

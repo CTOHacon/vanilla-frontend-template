@@ -1,1 +1,1 @@
-# vanilla-frontend-template
+# Компоненти

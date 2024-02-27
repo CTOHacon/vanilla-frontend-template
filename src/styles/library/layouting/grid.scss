@@ -1,7 +1,7 @@
-[class*='g-layout'],
+.grid,
 
 // start wp-admin style
-[class*='g-layout']>.block-editor-inner-blocks>.block-editor-block-list__layout
+.grid>.block-editor-inner-blocks>.block-editor-block-list__layout
 // end wp-admin style
 {
 	display: grid;
@@ -12,29 +12,32 @@
 	grid-auto-flow: dense;
 }
 
-@mixin grid-layout($breakpoint: '') {
+@mixin grid-classes($breakpoint: '') {
 	@if $breakpoint != '' {
 		$breakpoint: -#{$breakpoint};
 	}
 	@for $i from 1 through 12 {
-		.g#{$breakpoint}-col-#{$i} {
+		.grid#{$breakpoint}-col-#{$i} {
 			grid-column: span $i;
 		}
-		.g#{$breakpoint}-col-start-#{$i} {
+		.grid-#{$breakpoint}-row-#{$i} {
+			grid-row: span $i;
+		}
+		.grid#{$breakpoint}-col-start-#{$i} {
 			grid-column-start: #{$i};
 		}
-		.g#{$breakpoint}-col-end-#{$i} {
+		.grid#{$breakpoint}-col-end-#{$i} {
 			grid-column-end: #{$i};
 		}
 	}
-	.g#{$breakpoint}-col-end-13 {
+	.grid#{$breakpoint}-col-end-13 {
 		grid-column-end: 13;
 	}
 }
-@include grid-layout();
+@include grid-classes();
 
 @each $breakpoint, $breakpointWidth in $breakpoints {
 	@media (max-width: $breakpointWidth) {
-		@include grid-layout($breakpoint);
+		@include grid-classes($breakpoint);
 	}
 }

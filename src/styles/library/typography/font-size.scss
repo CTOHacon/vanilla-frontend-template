@@ -1,19 +1,19 @@
-@mixin fontSizes($breakpoint: '') {
+@mixin font-size-classes($breakpoint: '') {
 	@if $breakpoint != '' {
 		$breakpoint: '-#{$breakpoint}';
 	}
 
-	@each $key, $value in $fontSizes {
+	@each $key, $value in $font-sizes {
 		.fs#{$breakpoint}-#{$key} {
 			font-size: $value;
 		}
 	}
 }
 
-@include fontSizes();
+@include font-size-classes();
 
 @each $breakpoint, $breakpointWidth in $breakpoints {
 	@media (max-width: $breakpointWidth) {
-		@include fontSizes($breakpoint);
+		@include font-size-classes($breakpoint);
 	}
 }

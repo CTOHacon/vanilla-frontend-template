@@ -1,4 +1,4 @@
-@mixin colorClassesSet($key, $value) {
+@mixin color-classes($key, $value) {
 	.background-#{$key} {
 		background: #{$value};
 
@@ -20,5 +20,5 @@
 }
 
 @each $color, $value in $colors {
-	@include colorClassesSet($color, $value);
+	@include color-classes($color, $value);
 }

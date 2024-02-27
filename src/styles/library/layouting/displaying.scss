@@ -1,4 +1,4 @@
-@mixin displaying($breakpoint: '') {
+@mixin displaying-classes($breakpoint: '') {
 	@if $breakpoint != '' {
 		$breakpoint: -#{$breakpoint};
 	}
@@ -12,7 +12,7 @@
 	.block#{$breakpoint} {
 		display: block;
 	}
-	.display-none#{$breakpoint} {
+	.none#{$breakpoint} {
 		display: none;
 	}
 	.relative#{$breakpoint} {
@@ -25,6 +25,6 @@
 
 @each $breakpoint, $breakpointWidth in $breakpoints {
 	@media (max-width: $breakpointWidth) {
-		@include displaying($breakpoint);
+		@include displaying-classes($breakpoint);
 	}
 }

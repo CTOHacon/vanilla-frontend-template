@@ -1,4 +1,4 @@
-@mixin alignment($breakpoint: '') {
+@mixin layout-alignment-classes($breakpoint: '') {
 	@if $breakpoint != '' {
 		$breakpoint: -#{$breakpoint};
 	}
@@ -57,10 +57,10 @@
 	}
 }
 
-@include alignment();
+@include layout-alignment-classes();
 
 @each $breakpoint, $breakpointWidth in $breakpoints {
 	@media (max-width: $breakpointWidth) {
-		@include alignment($breakpoint);
+		@include layout-alignment-classes($breakpoint);
 	}
 }

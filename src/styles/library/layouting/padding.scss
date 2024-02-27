@@ -1,6 +1,6 @@
 $directions: ('t', 'b', 'l', 'r', 'h', 'v');
 
-@mixin paddingPropertiesByDirection($value, $direction) {
+@mixin padding-properties-by-direction($value, $direction) {
 	@if $direction == 't' {
 		padding-top: #{$value}px;
 	} @else if $direction == 'b' {
@@ -18,7 +18,7 @@ $directions: ('t', 'b', 'l', 'r', 'h', 'v');
 	}
 }
 
-@mixin padding-options($breakpoint: '') {
+@mixin padding-classes($breakpoint: '') {
 	@if $breakpoint != '' {
 		$breakpoint: '-#{$breakpoint}';
 	}
@@ -29,15 +29,15 @@ $directions: ('t', 'b', 'l', 'r', 'h', 'v');
 		}
 		@each $direction in $directions {
 			.p#{$direction}#{$breakpoint}-#{$padding} {
-				@include paddingPropertiesByDirection($padding, $direction);
+				@include padding-properties-by-direction($padding, $direction);
 			}
 		}
 	}
 }
 
-@include padding-options();
+@include padding-classes();
 @each $breakpoint, $breakpointWidth in $breakpoints {
 	@media (max-width: $breakpointWidth) {
-		@include padding-options($breakpoint);
+		@include padding-classes($breakpoint);
 	}
 }

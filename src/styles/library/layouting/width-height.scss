@@ -1,4 +1,4 @@
-@mixin dimensional-sizing-options($breakpoint: '') {
+@mixin dimensional-sizing-classes($breakpoint: '') {
 	@if $breakpoint != '' {
 		$breakpoint: -#{$breakpoint};
 	}
@@ -14,10 +14,10 @@
 	}
 }
 
-@include sizing-options();
+@include dimensional-sizing-classes();
 
 @each $breakpoint, $breakpointWidth in $breakpoints {
 	@media (max-width: $breakpointWidth) {
-		@include sizing-options($breakpoint);
+		@include dimensional-sizing-classes($breakpoint);
 	}
 }
